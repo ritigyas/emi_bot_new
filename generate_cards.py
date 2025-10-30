@@ -1,120 +1,114 @@
 #!/usr/bin/env python3
 """
-generate_cards.py - improved template layout support and fitted text/wrapping.
+generate_cards.py - Final version with overlap fixes.
 
-Generates per-customer template cards:
- - {id}_loan.png
- - {id}_emi.png
- - {id}_bank.png
+Creates design-standard templates and generates per-customer cards (loan, emi, bank)
+using Pillow + pandas.
 
-Usage:
-    python generate_cards.py
+Outputs:
+ - Templates: assets/templates/{loan|emi|bank}_card_template.png
+ - Generated cards per row: assets/generated/{id}_loan.png, {id}_emi.png, {id}_bank.png
+ - Logs: logs/card_generation.log
 """
-
 import os
 import sys
+import math
 import logging
+import requests
 from pathlib import Path
-from typing import Tuple, Optional, Dict, Any, List
+from typing import Tuple, List, Optional, Dict, Any
 
-import textwrap
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
-# ----- CONFIG -----
+# ------------------- CONFIG -------------------
 PROJECT_ROOT = Path(".")
-OUTPUT_DIR = PROJECT_ROOT / "assets" / "generated"
-TEMPLATES_DIR = PROJECT_ROOT / "assets" / "templates"
-LOGOS_DIR = PROJECT_ROOT / "assets" / "logos"
-FONTS_DIR = PROJECT_ROOT / "assets" / "fonts"
+ASSETS = PROJECT_ROOT / "assets"
+TEMPLATES_DIR = ASSETS / "templates"
+LOGOS_DIR = ASSETS / "logos"
+FONTS_DIR = ASSETS / "fonts"
+GENERATED_DIR = ASSETS / "generated"
+DATA_DIR = PROJECT_ROOT / "data"
+LOG_DIR = PROJECT_ROOT / "logs"
 
-CUSTOMER_CSV = PROJECT_ROOT / "data" / "customers_master.csv"
-LOG_PATH = PROJECT_ROOT / "logs" / "card_generation.log"
+# Assumes customers_master.csv is present in the data directory
+CUSTOMER_CSV = DATA_DIR / "customers_master.csv" 
+LOG_PATH = LOG_DIR / "card_generation.log"
 
-# Templates filenames (place your design images here)
-TEMPLATE_FILES = {
-    "loan": TEMPLATES_DIR / "loan.png",   # e.g. a designed image with visual elements
-    "emi": TEMPLATES_DIR / "emi.png",
-    "bank": TEMPLATES_DIR / "bank.png",
+# Preferred Font and Fallbacks
+FONT_FILENAME = "Montserrat-SemiBold.ttf"
+FONT_URL = "https://github.com/googlefonts/Montserrat/raw/main/fonts/ttf/Montserrat-SemiBold.ttf"
+FONT_FALLBACKS_SYSTEM = ("arial.ttf", "DejaVuSans.ttf", "LiberationSans-Regular.ttf")
+
+WIDTH, HEIGHT = 1280, 720
+PRIMARY_COLOR = (82, 27, 123)  # Saarathi purple (#521B7B)
+LIGHT_PURPLE = (120, 80, 160)
+TEXT_COLOR = (255, 255, 255, 255)  # white
+DARK_TEXT_COLOR = (30, 30, 30, 255)  # for light backgrounds
+ACCENT_COLOR = (255, 204, 0)  # Gold accent for highlights
+
+TEMPLATE_FILENAMES = {
+    "loan": TEMPLATES_DIR / "loan_card_template.png",
+    "emi": TEMPLATES_DIR / "emi_card_template.png",
+    "bank": TEMPLATES_DIR / "bank_card_template.png",
 }
 
-# Visual / design defaults
-WIDTH, HEIGHT = 1280, 720  # expected template size (script uses these coords)
-DEFAULT_FONT_NAME = "Montserrat-SemiBold.ttf"  # place valid .ttf in assets/fonts or use system font
-TEXT_COLOR = (255, 255, 255)  # white
+# Ensure directories exist
+for d in (TEMPLATES_DIR, LOGOS_DIR, FONTS_DIR, GENERATED_DIR, DATA_DIR, LOG_DIR):
+    d.mkdir(parents=True, exist_ok=True)
 
-# Ensure folders exist
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
-LOGOS_DIR.mkdir(parents=True, exist_ok=True)
-FONTS_DIR.mkdir(parents=True, exist_ok=True)
-
-# ----- Logging -----
+# Setup logging
 logging.basicConfig(
     filename=str(LOG_PATH),
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
 logger = logging.getLogger("cardgen")
-console_handler = logging.StreamHandler(sys.stdout)
-console_handler.setLevel(logging.INFO)
-logger.addHandler(console_handler)
+console = logging.StreamHandler(sys.stdout)
+console.setLevel(logging.INFO)
+logger.addHandler(console)
 
-# ----- Layout definitions -----
-# Boxes specified as (x, y, w, h). Coordinates are for 1280x720 templates.
-# Tune these values to match placeholders in your template images.
-LAYOUTS: Dict[str, Dict[str, Any]] = {
-    "loan": {
-        "template": TEMPLATE_FILES["loan"],
-        "boxes": {
-            "emi_id": (0, 20, WIDTH, 100, "center"),
-            "name": (80, 140, WIDTH - 160, 140, "left"),
-            "amount": (80, 320, WIDTH - 160, 140, "left"),
-        },
-        "font_sizes": {"emi_id": 64, "name": 72, "amount": 64},
-    },
-    "emi": {
-        "template": TEMPLATE_FILES["emi"],
-        "boxes": {
-            "title": (80, 40, WIDTH - 160, 60, "left"),
-            "emi_amount": (80, 120, WIDTH - 160, 180, "left"),
-            "due": (80, 320, WIDTH - 160, 80, "left"),
-            "phone": (80, HEIGHT - 100, WIDTH - 160, 60, "left"),
-        },
-        "font_sizes": {"title": 48, "emi_amount": 96, "due": 36, "phone": 32},
-    },
-    "bank": {
-        "template": TEMPLATE_FILES["bank"],
-        "boxes": {
-            "logo": (80, 80, 160, 160, "left"),
-            "bank_name": (260, 100, WIDTH - 320, 80, "left"),
-            "branch": (260, 190, WIDTH - 320, 60, "left"),
-            "ifsc": (260, 260, WIDTH - 320, 60, "left"),
-            "reminder": (80, HEIGHT - 100, WIDTH - 160, 60, "left"),
-        },
-        "font_sizes": {"bank_name": 48, "branch": 36, "ifsc": 34, "reminder": 32},
-    },
-}
+# ------------------- UTILITIES -------------------
+def download_font_if_not_exists(font_name: str, url: str, target_dir: Path) -> bool:
+    """Downloads a font from a URL if it doesn't exist locally."""
+    font_path = target_dir / font_name
+    if font_path.exists():
+        return True
+    logger.info(f"Attempting to download font from {url} to {font_path}")
+    try:
+        response = requests.get(url, stream=True, timeout=15)
+        response.raise_for_status()
+        with open(font_path, "wb") as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+        logger.info(f"Successfully downloaded {font_name}")
+        return True
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Failed to download font {font_name} from {url}: {e}")
+        return False
 
 
-# ----- Utility functions -----
 def load_font(preferred: Optional[str], size: int) -> ImageFont.FreeTypeFont:
-    """
-    Try project font, then system fallback, then ImageFont.load_default()
-    """
-    if preferred:
-        p = FONTS_DIR / preferred
-        try:
+    """Try local font, then downloaded font, then fallbacks, then default."""
+    try:
+        if preferred:
+            p = FONTS_DIR / preferred
             if p.exists():
                 return ImageFont.truetype(str(p), size)
-        except Exception as e:
-            logger.warning(f"Could not load font {p}: {e}")
+    except Exception as e:
+        logger.debug(f"Failed to load preferred local font {preferred}: {e}")
 
-    # try common system fonts
-    for sysf in ("arial.ttf", "DejaVuSans.ttf", "LiberationSans-Regular.ttf"):
+    if preferred == FONT_FILENAME and FONT_URL:
+        if download_font_if_not_exists(FONT_FILENAME, FONT_URL, FONTS_DIR):
+            try:
+                return ImageFont.truetype(str(FONTS_DIR / FONT_FILENAME), size)
+            except Exception as e:
+                logger.debug(f"Failed to load downloaded font {FONT_FILENAME}: {e}")
+
+    for sysf in FONT_FALLBACKS_SYSTEM:
         try:
-            return ImageFont.truetype(sysf, size)
+            return ImageFont.truetype(str(sysf), size)
         except Exception:
             continue
 
@@ -123,280 +117,384 @@ def load_font(preferred: Optional[str], size: int) -> ImageFont.FreeTypeFont:
 
 
 def text_size(draw: ImageDraw.Draw, text: str, font: ImageFont.ImageFont) -> Tuple[int, int]:
-    """
-    Return (width, height) of text. Prefer draw.textbbox (Pillow >= 8), fallback to font.getsize.
-    """
+    """Return (width, height) using textbbox or font.getsize fallback."""
     try:
         bbox = draw.textbbox((0, 0), text, font=font)
-        w = bbox[2] - bbox[0]
-        h = bbox[3] - bbox[1]
-        return int(w), int(h)
+        return int(bbox[2] - bbox[0]), int(bbox[3] - bbox[1])
     except Exception:
         try:
             return font.getsize(text)
         except Exception:
-            return (len(text) * 8, 16)
+            return (len(text) * max(8, getattr(font, "size", 16) // 2), getattr(font, "size", 16))
 
 
-def wrap_text_to_lines(draw: ImageDraw.Draw, text: str, font: ImageFont.ImageFont, max_width: int) -> List[str]:
-    """
-    Wrap text into lines that fit max_width using greedy word accumulation.
-    Returns list of lines.
-    """
-    words = str(text).split()
-    if not words:
-        return [""]
-    lines = []
-    current = words[0]
-    for w in words[1:]:
-        trial = current + " " + w
-        w_pixel, _ = text_size(draw, trial, font)
-        if w_pixel <= max_width:
-            current = trial
-        else:
-            lines.append(current)
-            current = w
-    lines.append(current)
-    return lines
+def create_vertical_gradient(w: int, h: int, top_color: Tuple[int, int, int], bottom_color: Tuple[int, int, int]) -> Image.Image:
+    """Generates a smooth vertical gradient."""
+    base = Image.new("RGB", (w, h), top_color)
+    top = Image.new("RGB", (w, h), bottom_color)
+    mask = Image.new("L", (w, h))
+    mask_data = []
+    for y in range(h):
+        mask_data.extend([int(255 * (y / max(1, h - 1)))] * w)
+    mask.putdata(mask_data)
+    blended = Image.composite(top, base, mask)
+    return blended
 
 
-def fit_and_wrap_text(draw: ImageDraw.Draw, text: str, box_w: int, box_h: int,
-                      preferred_font: Optional[str], start_size: int, min_size: int = 12) -> Tuple[ImageFont.ImageFont, List[str]]:
-    """
-    Try font sizes from start_size down to min_size to wrap text to fit within box_w and fit within box_h.
-    Returns chosen font and lines list.
-    """
-    size = start_size
-    while size >= min_size:
-        font = load_font(preferred_font, size)
-        lines = wrap_text_to_lines(draw, text, font, box_w)
-        line_h = text_size(draw, "Ay", font)[1]  # approx line height
-        total_h = line_h * len(lines)
-        if total_h <= box_h:
-            return font, lines
-        size -= 2
-    # fallback: smallest font, truncated lines
-    font = load_font(preferred_font, min_size)
-    lines = wrap_text_to_lines(draw, text, font, box_w)
-    # If still too tall, try to truncate and append ellipsis
-    line_h = text_size(draw, "Ay", font)[1]
-    max_lines = max(1, box_h // line_h)
-    if len(lines) > max_lines:
-        lines = lines[:max_lines]
-        # try adding ellipsis to last line
-        last = lines[-1]
-        # shorten last line until it fits with "..."
-        while text_size(draw, last + "...", font)[0] > box_w and len(last) > 0:
-            last = last[:-1]
-        lines[-1] = last + "..."
-    return font, lines
+def create_background(w=WIDTH, h=HEIGHT) -> Image.Image:
+    """Create a purple gradient background."""
+    top_color = (200, 180, 230)
+    bottom_color = PRIMARY_COLOR
+    grad = create_vertical_gradient(w, h, top_color, bottom_color)
+    return grad.convert("RGBA")
 
+
+def format_currency(value: str) -> str:
+    """Formats a string/float value into Indian Rupee currency with commas."""
+    try:
+        v = float(value)
+        return f"₹{int(round(v)):,}"
+    except Exception:
+        return "N/A"
 
 def normalize_logo_path(path_str: str) -> str:
-    """
-    Normalize CSV bank_logo_path. Strip leading slashes and try assets/logos fallback.
-    """
+    """Finds the correct path for a logo, checking absolute, relative, and LOGOS_DIR."""
     if not path_str or str(path_str).strip() == "":
         return ""
     p = str(path_str).strip()
-    # remove leading slash/backslash common in some CSVs
-    if p.startswith("/") or p.startswith("\\"):
-        p = p.lstrip("/\\")
     candidate = Path(p)
     if candidate.exists():
         return str(candidate)
-    # try logos dir with basename
-    cand2 = LOGOS_DIR / candidate.name
-    if cand2.exists():
-        return str(cand2)
-    # not found
+    candidate2 = LOGOS_DIR / candidate.name
+    if candidate2.exists():
+        return str(candidate2)
     return ""
 
 
-# ----- Card drawing functions -----
-def draw_text_lines(overlay_draw: ImageDraw.Draw, lines: List[str], font: ImageFont.ImageFont,
-                    x: int, y: int, box_w: int, box_h: int, align: str = "left"):
-    """
-    Draw lines inside the provided box starting at (x,y). align can be 'left' or 'center'.
-    """
-    line_h = text_size(overlay_draw, "Ay", font)[1]
-    total_h = line_h * len(lines)
-    # vertical centering in the box
-    y0 = y + max(0, (box_h - total_h) // 2)
-    for i, line in enumerate(lines):
-        w, h = text_size(overlay_draw, line, font)
-        if align == "center":
-            x_draw = x + max(0, (box_w - w) // 2)
-        else:
-            x_draw = x
-        overlay_draw.text((x_draw, y0 + i * line_h), line, font=font, fill=TEXT_COLOR)
+# ------------------- TEMPLATE CREATION (Cleaned - Static elements only) -------------------
+def create_loan_template(save_path: Path):
+    bg = create_background(WIDTH, HEIGHT)
+    draw = ImageDraw.Draw(bg)
+
+    card_margin = 80
+    card_width = WIDTH - 2 * card_margin
+    card_height = HEIGHT - 2 * card_margin
+    card_x = card_margin
+    card_y = card_margin + 20
+
+    # Rounded rectangle background for the card
+    draw.rounded_rectangle(
+        (card_x, card_y, card_x + card_width, card_y + card_height),
+        radius=30,
+        fill=PRIMARY_COLOR
+    )
+
+    text_area_x = card_x + 50
+    
+    # Labels (ONLY static labels/placeholders)
+    # Adjusted position for "EMI Loan Card" to give space to Emi-ID
+    emi_loan_card_font = load_font(FONT_FILENAME, 48)
+    draw.text((card_x + card_width // 2, card_y + 40), "EMI Loan Card", fill=TEXT_COLOR, font=emi_loan_card_font, anchor="ms")
+
+    # Adjusted Y coordinates for labels to prevent overlap with dynamic content
+    name_label_font = load_font(FONT_FILENAME, 32)
+    draw.text((text_area_x, card_y + 180), "Customer Name:", fill=ACCENT_COLOR, font=name_label_font)
+
+    amount_label_font = load_font(FONT_FILENAME, 32)
+    draw.text((text_area_x, card_y + 370), "Total Loan Amount:", fill=ACCENT_COLOR, font=amount_label_font)
+
+    bg.save(save_path, "PNG")
+    logger.info(f"Created loan template: {save_path}")
 
 
-def generate_card_for_row(row: pd.Series, card_type: str):
-    """
-    Generic renderer using LAYOUTS metadata. card_type in ("loan","emi","bank")
-    """
-    layout = LAYOUTS[card_type]
-    template_path: Path = layout["template"]
-    out_name = f"{str(row.get('id') or row.get('Id') or row.get('ID') or 'unknown')}_{card_type}.png"
-    out_path = OUTPUT_DIR / out_name
+def create_emi_template(save_path: Path):
+    """Creates a clean EMI template with header and footer bars."""
+    bg = create_background(WIDTH, HEIGHT)
+    draw = ImageDraw.Draw(bg)
 
-    # load template or create blank background if missing
-    if template_path.exists():
-        base = Image.open(template_path).convert("RGBA")
-        # optionally resize template to expected WIDTHxHEIGHT if not matching
-        if base.size != (WIDTH, HEIGHT):
-            base = base.resize((WIDTH, HEIGHT), Image.LANCZOS)
-    else:
-        logger.warning(f"Template missing for {card_type}: {template_path}. Using plain background.")
-        base = Image.new("RGBA", (WIDTH, HEIGHT), (255, 255, 255, 255))
+    card_margin_x = 90
+    card_margin_y = 70
+    card_width = WIDTH - 2 * card_margin_x
+    card_height = HEIGHT - 2 * card_margin_y
 
-    # create transparent overlay to draw text and logos (so template remains visible)
-    overlay = Image.new("RGBA", (WIDTH, HEIGHT), (255, 255, 255, 0))
-    draw = ImageDraw.Draw(overlay)
+    # Main card body
+    draw.rounded_rectangle(
+        (card_margin_x, card_margin_y, card_margin_x + card_width, card_margin_y + card_height),
+        radius=30,
+        fill=PRIMARY_COLOR
+    )
 
-    boxes = layout["boxes"]
-    fontsizes = layout.get("font_sizes", {})
+    inner_pad_x = 60
+    inner_content_x = card_margin_x + inner_pad_x
 
-    try:
-        if card_type == "loan":
-            # emi_id
-            x, y, w_box, h_box, align = boxes["emi_id"]
-            font, lines = fit_and_wrap_text(draw, f"Emi-ID - {row.get('id')}", w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("emi_id", 64))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
+    # EMI Details Header Box (Label only)
+    emi_label_font = load_font(FONT_FILENAME, 36)
+    emi_label_text = "Monthly EMI Amount"
+    tw, th = text_size(draw, emi_label_text, emi_label_font)
+    
+    # Position the header box and label clearly at the top of the card's content area
+    header_box_y = card_margin_y + 50 # Adjusted Y
+    draw.rounded_rectangle(
+        (inner_content_x, header_box_y, inner_content_x + tw + 40, header_box_y + th + 20),
+        radius=15,
+        fill=LIGHT_PURPLE
+    )
+    draw.text((inner_content_x + 20, header_box_y + 10), emi_label_text, fill=TEXT_COLOR, font=emi_label_font)
 
-            # name
-            x, y, w_box, h_box, align = boxes["name"]
-            name_text = f"Name - {row.get('name', '')}"
-            font, lines = fit_and_wrap_text(draw, name_text, w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("name", 72))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
+    # Contact Bar (Empty bar, data will be drawn dynamically)
+    # Ensure this bar is at the bottom, not interfering with central content
+    draw.rounded_rectangle((card_margin_x, HEIGHT - card_margin_y - 60, WIDTH - card_margin_x, HEIGHT - card_margin_y), radius=20, fill=(0, 0, 0, 150))
 
-            # amount
-            x, y, w_box, h_box, align = boxes["amount"]
-            amt = row.get("loan_amount", "")
-            amount_text = f"Amount - Rs.{int(float(amt)):,}" if amt else "Amount - N/A"
-            font, lines = fit_and_wrap_text(draw, amount_text, w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("amount", 64))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-        elif card_type == "emi":
-            # title (static)
-            x, y, w_box, h_box, align = boxes["title"]
-            font, lines = fit_and_wrap_text(draw, "EMI Amount", w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("title", 48))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-            # EMI amount
-            x, y, w_box, h_box, align = boxes["emi_amount"]
-            amt = row.get("emi_amount", "")
-            emi_text = f"{int(float(amt)):,}" if amt else "N/A"
-            font, lines = fit_and_wrap_text(draw, emi_text, w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("emi_amount", 96))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-            # due date
-            x, y, w_box, h_box, align = boxes["due"]
-            due_text = f"Due on {row.get('due_date','N/A')}"
-            font, lines = fit_and_wrap_text(draw, due_text, w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("due", 36))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-            # phone
-            x, y, w_box, h_box, align = boxes["phone"]
-            phone_text = f"Contact: {row.get('phone_number','')}"
-            font, lines = fit_and_wrap_text(draw, phone_text, w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("phone", 32))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-        elif card_type == "bank":
-            # logo
-            lx, ly, lw, lh, _ = boxes["logo"]
-            logo_path = normalize_logo_path(row.get("bank_logo_path", ""))
-            logo_img = None
-            if logo_path:
-                try:
-                    logo_img = Image.open(logo_path).convert("RGBA")
-                    logo_img = logo_img.resize((lw, lh), Image.LANCZOS)
-                except Exception as e:
-                    logger.warning(f"Failed to open logo {logo_path}: {e}")
-                    logo_img = None
-            if not logo_img:
-                # placeholder
-                logo_img = Image.new("RGBA", (lw, lh), (255, 255, 255, 0))
-                ld = ImageDraw.Draw(logo_img)
-                ld.ellipse((0, 0, lw, lh), fill=(255, 255, 255, 255))
-
-            overlay.paste(logo_img, (lx, ly), logo_img)
-
-            # bank name
-            x, y, w_box, h_box, align = boxes["bank_name"]
-            bank_name = row.get("bank_name", "N/A")
-            font, lines = fit_and_wrap_text(draw, bank_name, w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("bank_name", 48))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-            # branch
-            x, y, w_box, h_box, align = boxes["branch"]
-            branch = row.get("branch_name", "")
-            font, lines = fit_and_wrap_text(draw, branch, w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("branch", 36))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-            # IFSC
-            x, y, w_box, h_box, align = boxes["ifsc"]
-            ifsc = row.get("ifsc", "")
-            font, lines = fit_and_wrap_text(draw, f"IFSC: {ifsc}" if ifsc else "IFSC: N/A", w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("ifsc", 34))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-            # reminder
-            x, y, w_box, h_box, align = boxes["reminder"]
-            reminder = "For queries call: " + (row.get("phone_number", "N/A"))
-            font, lines = fit_and_wrap_text(draw, reminder, w_box, h_box, DEFAULT_FONT_NAME, fontsizes.get("reminder", 32))
-            draw_text_lines(draw, lines, font, x, y, w_box, h_box, align)
-
-        # composite overlay above template
-        composed = Image.alpha_composite(base, overlay).convert("RGBA")
-        composed.save(out_path)
-        logger.info(f"Generated {card_type} card: {out_path}")
-    except Exception as e:
-        logger.exception(f"Error generating {card_type} card for id={row.get('id')}: {e}")
-        raise
+    bg.save(save_path, "PNG")
+    logger.info(f"Created emi template: {save_path}")
 
 
-# ----- Main batch runner -----
+def create_bank_template(save_path: Path):
+    bg = create_background(WIDTH, HEIGHT)
+    draw = ImageDraw.Draw(bg)
+
+    card_margin_x = 90
+    card_margin_y = 70
+    card_width = WIDTH - 2 * card_margin_x
+    card_height = HEIGHT - 2 * card_margin_y
+
+    # Main white card body
+    draw.rounded_rectangle((card_margin_x, card_margin_y, card_margin_x + card_width, card_margin_y + card_height), radius=30, fill=(255, 255, 255, 255))
+
+    inner_pad_x = 60
+    inner_content_x = card_margin_x + inner_pad_x
+
+    # Logo Placeholder
+    logo_size = 120
+    logo_x = inner_content_x
+    logo_y = card_margin_y + 50
+    draw.rounded_rectangle((logo_x, logo_y, logo_x + logo_size, logo_y + logo_size), radius=20, fill=(200, 200, 200, 255))
+    logo_text_font = load_font(FONT_FILENAME, 28)
+    draw.text((logo_x + logo_size // 2, logo_y + logo_size // 2), "LOGO", fill=DARK_TEXT_COLOR, font=logo_text_font, anchor="ms")
+
+    # Fixed Labels - Adjusted for better spacing
+    bank_name_font = load_font(FONT_FILENAME, 48)
+    draw.text((logo_x + logo_size + 40, logo_y + 20), "Bank Name:", fill=PRIMARY_COLOR, font=bank_name_font) # Added colon for clarity
+
+    branch_font = load_font(FONT_FILENAME, 32)
+    draw.text((logo_x + logo_size + 40, logo_y + 80), "Branch Location:", fill=DARK_TEXT_COLOR, font=branch_font) # Added colon
+
+    # Account info labels - These are now static labels in the template
+    acc_label_y_start = logo_y + logo_size + 80 # Starting Y for the block of account info
+
+    _draw_text(draw, "IFSC:", FONT_FILENAME, 32, inner_content_x, acc_label_y_start, DARK_TEXT_COLOR, align='ls')
+    _draw_text(draw, "Account Holder:", FONT_FILENAME, 32, inner_content_x, acc_label_y_start + 70, DARK_TEXT_COLOR, align='ls')
+    _draw_text(draw, "Account No:", FONT_FILENAME, 32, inner_content_x, acc_label_y_start + 140, DARK_TEXT_COLOR, align='ls')
+
+    bg.save(save_path, "PNG")
+    logger.info(f"Created bank template: {save_path}")
+
+
+def ensure_templates():
+    """Ensures all template files exist before generation starts."""
+    if not TEMPLATE_FILENAMES["loan"].exists():
+        create_loan_template(TEMPLATE_FILENAMES["loan"])
+    if not TEMPLATE_FILENAMES["emi"].exists():
+        create_emi_template(TEMPLATE_FILENAMES["emi"])
+    if not TEMPLATE_FILENAMES["bank"].exists():
+        create_bank_template(TEMPLATE_FILENAMES["bank"])
+    logger.info(f"Templates present in {TEMPLATES_DIR}")
+
+
+# ------------------- DRAWING HELPERS -------------------
+def _draw_text(draw: ImageDraw.Draw, text: str, font_name: str, size: int, x: int, y: int, color: Tuple[int, int, int, int], align: str = "ls"):
+    """Draws text with specified size, position, color, and anchor alignment."""
+    fnt = load_font(font_name, size)
+    draw.text((x, y), text, fill=color, font=fnt, anchor=align)
+
+# ------------------- CARD GENERATION -------------------
+def generate_card_for_row(row: Dict[str, Any]):
+    cid = row.get("id") or row.get("customer_id") or "unknown"
+    
+    # --- Shared Coordinates ---
+    card_margin_x = 90
+    card_margin_y = 70
+    card_width = WIDTH - 2 * card_margin_x
+    card_x = card_margin_x
+    card_y = card_margin_y
+    center_x = card_margin_x + card_width // 2
+    inner_pad_x = 60
+    inner_content_x = card_margin_x + inner_pad_x
+    
+    # ---------- LOAN (Fixed Overlap) ----------
+    loan_tpl = Image.open(TEMPLATE_FILENAMES["loan"]).convert("RGBA")
+    loan_out = loan_tpl.copy()
+    draw = ImageDraw.Draw(loan_out)
+
+    text_start_x = card_x + 50 # Start of dynamic content
+    
+    # Emi-ID (Center top) - Adjusted Y to be below "EMI Loan Card" title
+    _draw_text(draw, f"Emi-ID - {row.get('emi_id', cid)}", FONT_FILENAME, 36,
+               center_x, card_y + 110, TEXT_COLOR, align='ms') # Increased Y from 100 to 110
+               
+    # Name (Below "Customer Name:" label)
+    _draw_text(draw, row.get("name", "N/A"), FONT_FILENAME, 60,
+               text_start_x, card_y + 235, TEXT_COLOR, align='ls') # Adjusted Y from 205 to 235
+    
+    # Loan Amount (Below "Total Loan Amount:" label)
+    _draw_text(draw, format_currency(row.get("loan_amount", "")), FONT_FILENAME, 60,
+               text_start_x, card_y + 425, TEXT_COLOR, align='ls') # Adjusted Y from 395 to 425
+
+    loan_out.save(GENERATED_DIR / f"{cid}_loan.png", "PNG")
+    logger.info(f"Saved loan card: {cid}_loan.png")
+
+    # ---------- EMI (Fixed Overlap - Single amount/date) ----------
+    emi_tpl = Image.open(TEMPLATE_FILENAMES["emi"]).convert("RGBA")
+    emi_out = emi_tpl.copy()
+    draw = ImageDraw.Draw(emi_out)
+
+    # Calculate content area for EMI details to avoid footer/header
+    content_top_y = card_margin_y + 120 # Below the "Monthly EMI Amount" box
+    content_bottom_y = HEIGHT - card_margin_y - 60 # Above the contact bar
+    content_height = content_bottom_y - content_top_y
+    
+    # 1. EMI AMOUNT (Main focus, centered within the available content area)
+    emi_amount = format_currency(row.get("emi_amount", ""))
+    emi_amount_y = content_top_y + content_height * 0.35 # Position higher in the content area
+    
+    _draw_text(draw, emi_amount, FONT_FILENAME, 100,
+               center_x, emi_amount_y, TEXT_COLOR, align='ms') # Large Text
+
+    # 2. DUE DATE (Below the EMI amount, with proper spacing)
+    due_text = f"Due on {row.get('due_date', 'N/A')}"
+    due_date_y = emi_amount_y + 120 # Increased spacing from 90 to 120
+    
+    _draw_text(draw, due_text, FONT_FILENAME, 40,
+               center_x, due_date_y, ACCENT_COLOR, align='ms') # Smaller Accent Text
+
+    # 3. CONTACT INFO (On the bottom bar, vertically centered)
+    phone_number = row.get('phone_number', '+91 XXXX XXXXX')
+    contact_text = f"Contact for support: {phone_number}"
+    contact_y = HEIGHT - card_margin_y - 30 # Y position is center of the bottom bar
+    
+    _draw_text(draw, contact_text, FONT_FILENAME, 30,
+               WIDTH // 2, contact_y, TEXT_COLOR, align='ms')
+
+    emi_out.save(GENERATED_DIR / f"{cid}_emi.png", "PNG")
+    logger.info(f"Saved emi card: {cid}_emi.png")
+
+    # ---------- BANK (Fixed Overlap) ----------
+    bank_tpl = Image.open(TEMPLATE_FILENAMES["bank"]).convert("RGBA")
+    bank_out = bank_tpl.copy()
+    draw = ImageDraw.Draw(bank_out)
+
+    logo_size = 120
+    logo_x = inner_content_x
+    logo_y = card_margin_y + 50
+    
+    # Logo placement
+    logo_path = normalize_logo_path(row.get("bank_logo_path", ""))
+    if logo_path:
+        try:
+            logo_img = Image.open(logo_path).convert("RGBA")
+            logo_img = logo_img.resize((logo_size, logo_size), Image.Resampling.LANCZOS if hasattr(Image, 'Resampling') else Image.LANCZOS)
+            bank_out.paste(logo_img, (logo_x, logo_y), logo_img)
+        except Exception as e:
+            logger.warning(f"Failed to paste logo {logo_path} for id={cid}: {e}. Drawing placeholder.")
+            _draw_text(draw, "LOGO", FONT_FILENAME, 28, logo_x + logo_size // 2, logo_y + logo_size // 2, DARK_TEXT_COLOR, align='ms')
+    
+    # Bank Details (Dynamic content positioned next to the labels)
+    # The labels "Bank Name:" and "Branch Location:" are now part of the template
+    # We need to draw the *values* next to these labels.
+    
+    # Calculate starting X for dynamic bank/branch details to align with the labels
+    bank_name_label_font = load_font(FONT_FILENAME, 48)
+    branch_name_label_font = load_font(FONT_FILENAME, 32)
+    
+    # Measure label text to determine where to place dynamic content
+    bank_name_label_width, _ = text_size(draw, "Bank Name:", bank_name_label_font)
+    branch_name_label_width, _ = text_size(draw, "Branch Location:", branch_name_label_font)
+    
+    # X position for dynamic text, slightly offset from the end of the longest label
+    dynamic_text_x_offset = logo_x + logo_size + 40 + max(bank_name_label_width, branch_name_label_width) + 15 
+
+    # Bank Name Value
+    _draw_text(draw, row.get("bank_name", "N/A"), FONT_FILENAME, 48,
+               dynamic_text_x_offset, logo_y + 20, PRIMARY_COLOR, align='ls')
+
+    # Branch Name Value
+    _draw_text(draw, row.get("branch_name", "N/A"), FONT_FILENAME, 32,
+               dynamic_text_x_offset, logo_y + 80, DARK_TEXT_COLOR, align='ls')
+    
+    # Account Info (Dynamic content positioned next to the labels)
+    acc_block_y = logo_y + logo_size + 80
+    
+    # Measure "IFSC:", "Account Holder:", "Account No:" labels to align values
+    ifsc_label_font = load_font(FONT_FILENAME, 32)
+    ifsc_label_width, _ = text_size(draw, "IFSC:", ifsc_label_font)
+    acc_holder_label_width, _ = text_size(draw, "Account Holder:", ifsc_label_font)
+    acc_no_label_width, _ = text_size(draw, "Account No:", ifsc_label_font)
+    
+    dynamic_acc_text_x_offset = inner_content_x + max(ifsc_label_width, acc_holder_label_width, acc_no_label_width) + 15
+    
+    _draw_text(draw, row.get('ifsc', 'N/A'), FONT_FILENAME, 32,
+               dynamic_acc_text_x_offset, acc_block_y, DARK_TEXT_COLOR, align='ls')
+               
+    _draw_text(draw, row.get('account_holder', row.get('name', 'N/A')), FONT_FILENAME, 32,
+               dynamic_acc_text_x_offset, acc_block_y + 70, DARK_TEXT_COLOR, align='ls')
+               
+    _draw_text(draw, row.get('account_number', 'XXXXXXXXXXXX'), FONT_FILENAME, 32,
+               dynamic_acc_text_x_offset, acc_block_y + 140, DARK_TEXT_COLOR, align='ls')
+
+    # Bottom reminder bar - Adjusted Y for vertical centering within the bar
+    contact_text = f"For queries call: {row.get('phone_number', '+91 XXXX XXXXX')}"
+    contact_bar_center_y = HEIGHT - card_margin_y - 30 # Y position is center of the bottom bar
+    _draw_text(draw, contact_text, FONT_FILENAME, 30,
+               WIDTH // 2, contact_bar_center_y, TEXT_COLOR, align='ms')
+
+    bank_out.save(GENERATED_DIR / f"{cid}_bank.png", "PNG")
+    logger.info(f"Saved bank card: {cid}_bank.png")
+
+
+# ------------------- MAIN -------------------
 def main():
+    logger.info("Starting card generation")
+    ensure_templates()
+
     if not CUSTOMER_CSV.exists():
-        logger.error(f"Customer CSV not found: {CUSTOMER_CSV}")
+        logger.error(f"Customer CSV not found: {CUSTOMER_CSV}. Please ensure it is in the '{DATA_DIR}' directory.")
         print(f"Customer CSV not found: {CUSTOMER_CSV}", file=sys.stderr)
-        sys.exit(1)
+        return
 
     try:
         df = pd.read_csv(CUSTOMER_CSV, dtype=str).fillna("")
     except Exception as e:
-        logger.exception(f"Failed to read CSV {CUSTOMER_CSV}: {e}")
-        print(f"Failed to read CSV {CUSTOMER_CSV}: {e}", file=sys.stderr)
-        sys.exit(1)
+        logger.exception(f"Failed to read CSV: {e}")
+        print("Failed to read CSV", e, file=sys.stderr)
+        return
 
-    # normalize columns to lowercase keys
+    if df.empty:
+        logger.warning("CSV contains no rows")
+        print("CSV contains no rows")
+        return
+
+    # Normalize column names to lowercase
     df.rename(columns={c: c.strip().lower() for c in df.columns}, inplace=True)
 
     total = len(df)
     success = 0
     failures = 0
 
-    for idx, s in df.iterrows():
-        # s is a Series with lowercase keys
+    for idx, raw_row in df.iterrows():
         try:
-            # bring keys used earlier to expected names (id, name, etc.)
-            row = s  # Series
-            # Normalize bank_logo_path field
+            row = {k.strip().lower(): (v if v is not None else "") for k, v in raw_row.items()}
+            # Normalize logo path before use
             if "bank_logo_path" in row:
                 row["bank_logo_path"] = normalize_logo_path(row["bank_logo_path"])
-
-            generate_card_for_row(row, "loan")
-            generate_card_for_row(row, "emi")
-            generate_card_for_row(row, "bank")
+            generate_card_for_row(row)
             success += 1
         except Exception as e:
-            logger.error(f"Failed for customer at row {idx} id={row.get('id')}: {e}")
+            logger.exception(f"Failed to generate cards for row {idx} (ID: {row.get('id', 'N/A')}): {e}")
             failures += 1
-            # continue
+            continue
 
-    logger.info(f"Card generation completed. Total: {total}, Success: {success}, Failures: {failures}")
-    print(f"Done. Total: {total}, Success: {success}, Failures: {failures}")
+    logger.info(f"Generation finished. Total: {total}, Success: {success}, Failures: {failures}")
+    print(f"Done. Total: {total}, Success: {success}, Failures: {failures}. Check '{GENERATED_DIR}' for images and '{LOG_DIR}' for logs.")
 
 
 if __name__ == "__main__":
