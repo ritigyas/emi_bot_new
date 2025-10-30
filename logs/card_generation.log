@@ -1,0 +1,293 @@
+2025-10-30 16:59:22,930 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:22,945 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:22,949 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:22,953 [ERROR] Error generating loan card for 001: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:22,956 [ERROR] Failed for customer 001: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,089 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,093 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,097 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,099 [ERROR] Error generating loan card for 002: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,100 [ERROR] Failed for customer 002: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,230 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,235 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,239 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,240 [ERROR] Error generating loan card for 003: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,241 [ERROR] Failed for customer 003: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,371 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,375 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,381 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,383 [ERROR] Error generating loan card for 004: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,383 [ERROR] Failed for customer 004: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,515 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,520 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,525 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,527 [ERROR] Error generating loan card for 005: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,528 [ERROR] Failed for customer 005: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,661 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,665 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,670 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,671 [ERROR] Error generating loan card for 006: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,672 [ERROR] Failed for customer 006: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,818 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,824 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,828 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,830 [ERROR] Error generating loan card for 007: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,831 [ERROR] Failed for customer 007: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,983 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,989 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,993 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 16:59:23,995 [ERROR] Error generating loan card for 008: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,995 [ERROR] Failed for customer 008: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 16:59:23,996 [INFO] Card generation completed. Total: 8, Success: 0, Failures: 8
+2025-10-30 17:01:05,412 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,417 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,420 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,422 [ERROR] Error generating loan card for 001: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:05,424 [ERROR] Failed for customer 001: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:05,569 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,572 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,576 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,578 [ERROR] Error generating loan card for 002: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:05,579 [ERROR] Failed for customer 002: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:05,712 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,716 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,720 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,722 [ERROR] Error generating loan card for 003: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:05,722 [ERROR] Failed for customer 003: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:05,850 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,853 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,857 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,859 [ERROR] Error generating loan card for 004: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:05,860 [ERROR] Failed for customer 004: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:05,991 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,995 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:05,998 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,001 [ERROR] Error generating loan card for 005: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:06,001 [ERROR] Failed for customer 005: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:06,130 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,134 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,138 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,139 [ERROR] Error generating loan card for 006: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:06,140 [ERROR] Failed for customer 006: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:06,280 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,284 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,288 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,290 [ERROR] Error generating loan card for 007: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:06,291 [ERROR] Failed for customer 007: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:06,441 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,446 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,451 [WARNING] Could not load font assets\fonts\Montserrat-SemiBold.ttf: unknown file format
+2025-10-30 17:01:06,455 [ERROR] Error generating loan card for 008: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 153, in generate_loan_card
+    w, h = draw.textsize(title_text, font=font_title)
+           ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:06,456 [ERROR] Failed for customer 008: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:01:06,457 [INFO] Card generation completed. Total: 8, Success: 0, Failures: 8
+2025-10-30 17:29:35,113 [ERROR] Error generating loan card for 001: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 179, in generate_loan_card
+    name_w, _ = draw.textsize(name_text, font=name_font)
+                ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,115 [ERROR] Failed for customer 001: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,131 [ERROR] Error generating loan card for 002: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 179, in generate_loan_card
+    name_w, _ = draw.textsize(name_text, font=name_font)
+                ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,132 [ERROR] Failed for customer 002: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,147 [ERROR] Error generating loan card for 003: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 179, in generate_loan_card
+    name_w, _ = draw.textsize(name_text, font=name_font)
+                ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,148 [ERROR] Failed for customer 003: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,162 [ERROR] Error generating loan card for 004: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 179, in generate_loan_card
+    name_w, _ = draw.textsize(name_text, font=name_font)
+                ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,163 [ERROR] Failed for customer 004: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,179 [ERROR] Error generating loan card for 005: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 179, in generate_loan_card
+    name_w, _ = draw.textsize(name_text, font=name_font)
+                ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,180 [ERROR] Failed for customer 005: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,195 [ERROR] Error generating loan card for 006: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 179, in generate_loan_card
+    name_w, _ = draw.textsize(name_text, font=name_font)
+                ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,197 [ERROR] Failed for customer 006: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,212 [ERROR] Error generating loan card for 007: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 179, in generate_loan_card
+    name_w, _ = draw.textsize(name_text, font=name_font)
+                ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,213 [ERROR] Failed for customer 007: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,228 [ERROR] Error generating loan card for 008: 'ImageDraw' object has no attribute 'textsize'
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 179, in generate_loan_card
+    name_w, _ = draw.textsize(name_text, font=name_font)
+                ^^^^^^^^^^^^^
+AttributeError: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,229 [ERROR] Failed for customer 008: 'ImageDraw' object has no attribute 'textsize'
+2025-10-30 17:29:35,230 [INFO] Card generation completed. Total: 8, Success: 0, Failures: 8
+2025-10-30 17:35:54,183 [INFO] Generated loan card: assets\generated\001_loan.png
+2025-10-30 17:35:54,229 [INFO] Generated emi card: assets\generated\001_emi.png
+2025-10-30 17:35:54,287 [INFO] Generated bank card: assets\generated\001_bank.png
+2025-10-30 17:35:54,342 [INFO] Generated loan card: assets\generated\002_loan.png
+2025-10-30 17:35:54,386 [INFO] Generated emi card: assets\generated\002_emi.png
+2025-10-30 17:35:54,443 [INFO] Generated bank card: assets\generated\002_bank.png
+2025-10-30 17:35:54,499 [INFO] Generated loan card: assets\generated\003_loan.png
+2025-10-30 17:35:54,544 [INFO] Generated emi card: assets\generated\003_emi.png
+2025-10-30 17:35:54,601 [INFO] Generated bank card: assets\generated\003_bank.png
+2025-10-30 17:35:54,655 [INFO] Generated loan card: assets\generated\004_loan.png
+2025-10-30 17:35:54,700 [INFO] Generated emi card: assets\generated\004_emi.png
+2025-10-30 17:35:54,801 [INFO] Generated bank card: assets\generated\004_bank.png
+2025-10-30 17:35:54,871 [INFO] Generated loan card: assets\generated\005_loan.png
+2025-10-30 17:35:54,915 [INFO] Generated emi card: assets\generated\005_emi.png
+2025-10-30 17:35:54,971 [INFO] Generated bank card: assets\generated\005_bank.png
+2025-10-30 17:35:55,024 [INFO] Generated loan card: assets\generated\006_loan.png
+2025-10-30 17:35:55,069 [INFO] Generated emi card: assets\generated\006_emi.png
+2025-10-30 17:35:55,124 [INFO] Generated bank card: assets\generated\006_bank.png
+2025-10-30 17:35:55,182 [INFO] Generated loan card: assets\generated\007_loan.png
+2025-10-30 17:35:55,228 [INFO] Generated emi card: assets\generated\007_emi.png
+2025-10-30 17:35:55,291 [INFO] Generated bank card: assets\generated\007_bank.png
+2025-10-30 17:35:55,345 [INFO] Generated loan card: assets\generated\008_loan.png
+2025-10-30 17:35:55,397 [INFO] Generated emi card: assets\generated\008_emi.png
+2025-10-30 17:35:55,476 [INFO] Generated bank card: assets\generated\008_bank.png
+2025-10-30 17:35:55,477 [INFO] Card generation completed. Total: 8, Success: 8, Failures: 0
+2025-10-30 17:41:49,963 [WARNING] Template missing for loan: assets\templates\loan.png. Using plain background.
+2025-10-30 17:41:50,042 [INFO] Generated loan card: assets\generated\001_loan.png
+2025-10-30 17:41:50,043 [WARNING] Template missing for emi: assets\templates\emi.png. Using plain background.
+2025-10-30 17:41:50,083 [INFO] Generated emi card: assets\generated\001_emi.png
+2025-10-30 17:41:50,085 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
+2025-10-30 17:41:50,131 [INFO] Generated bank card: assets\generated\001_bank.png
+2025-10-30 17:41:50,134 [WARNING] Template missing for loan: assets\templates\loan.png. Using plain background.
+2025-10-30 17:41:50,180 [INFO] Generated loan card: assets\generated\002_loan.png
+2025-10-30 17:41:50,182 [WARNING] Template missing for emi: assets\templates\emi.png. Using plain background.
+2025-10-30 17:41:50,223 [INFO] Generated emi card: assets\generated\002_emi.png
+2025-10-30 17:41:50,225 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
+2025-10-30 17:41:50,270 [INFO] Generated bank card: assets\generated\002_bank.png
+2025-10-30 17:41:50,274 [WARNING] Template missing for loan: assets\templates\loan.png. Using plain background.
+2025-10-30 17:41:50,318 [INFO] Generated loan card: assets\generated\003_loan.png
+2025-10-30 17:41:50,320 [WARNING] Template missing for emi: assets\templates\emi.png. Using plain background.
+2025-10-30 17:41:50,361 [INFO] Generated emi card: assets\generated\003_emi.png
+2025-10-30 17:41:50,364 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
+2025-10-30 17:41:50,407 [INFO] Generated bank card: assets\generated\003_bank.png
+2025-10-30 17:41:50,410 [WARNING] Template missing for loan: assets\templates\loan.png. Using plain background.
+2025-10-30 17:41:50,452 [INFO] Generated loan card: assets\generated\004_loan.png
+2025-10-30 17:41:50,455 [WARNING] Template missing for emi: assets\templates\emi.png. Using plain background.
+2025-10-30 17:41:50,495 [INFO] Generated emi card: assets\generated\004_emi.png
+2025-10-30 17:41:50,497 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
+2025-10-30 17:41:50,538 [INFO] Generated bank card: assets\generated\004_bank.png
+2025-10-30 17:41:50,542 [WARNING] Template missing for loan: assets\templates\loan.png. Using plain background.
+2025-10-30 17:41:50,584 [INFO] Generated loan card: assets\generated\005_loan.png
+2025-10-30 17:41:50,586 [WARNING] Template missing for emi: assets\templates\emi.png. Using plain background.
+2025-10-30 17:41:50,628 [INFO] Generated emi card: assets\generated\005_emi.png
+2025-10-30 17:41:50,629 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
+2025-10-30 17:41:50,673 [INFO] Generated bank card: assets\generated\005_bank.png
+2025-10-30 17:41:50,675 [WARNING] Template missing for loan: assets\templates\loan.png. Using plain background.
+2025-10-30 17:41:50,714 [INFO] Generated loan card: assets\generated\006_loan.png
+2025-10-30 17:41:50,716 [WARNING] Template missing for emi: assets\templates\emi.png. Using plain background.
+2025-10-30 17:41:50,757 [INFO] Generated emi card: assets\generated\006_emi.png
+2025-10-30 17:41:50,759 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
+2025-10-30 17:41:50,799 [INFO] Generated bank card: assets\generated\006_bank.png
+2025-10-30 17:41:50,801 [WARNING] Template missing for loan: assets\templates\loan.png. Using plain background.
+2025-10-30 17:41:50,847 [INFO] Generated loan card: assets\generated\007_loan.png
+2025-10-30 17:41:50,849 [WARNING] Template missing for emi: assets\templates\emi.png. Using plain background.
+2025-10-30 17:41:50,888 [INFO] Generated emi card: assets\generated\007_emi.png
+2025-10-30 17:41:50,891 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
+2025-10-30 17:41:50,930 [INFO] Generated bank card: assets\generated\007_bank.png
+2025-10-30 17:41:50,933 [WARNING] Template missing for loan: assets\templates\loan.png. Using plain background.
+2025-10-30 17:41:50,973 [INFO] Generated loan card: assets\generated\008_loan.png
+2025-10-30 17:41:50,974 [WARNING] Template missing for emi: assets\templates\emi.png. Using plain background.
+2025-10-30 17:41:51,012 [INFO] Generated emi card: assets\generated\008_emi.png
+2025-10-30 17:41:51,013 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
+2025-10-30 17:41:51,052 [INFO] Generated bank card: assets\generated\008_bank.png
+2025-10-30 17:41:51,054 [INFO] Card generation completed. Total: 8, Success: 8, Failures: 0
