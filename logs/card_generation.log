@@ -697,3 +697,43 @@ Traceback (most recent call last):
                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
   File "parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
 pandas.errors.EmptyDataError: No columns to parse from file
+2025-10-31 23:48:27,847 [INFO] Starting generation
+2025-10-31 23:48:27,848 [INFO] Templates ready in assets\templates (force=False)
+2025-10-31 23:48:27,850 [ERROR] Failed to read CSV
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\scripts\generate_cards.py", line 291, in main
+    df = pd.read_csv(csv_path, dtype=str).fillna("")
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2025-11-01 00:07:19,089 [INFO] Starting generation
+2025-11-01 00:07:19,090 [INFO] Templates ready in assets\templates (force=False)
+2025-11-01 00:07:19,181 [INFO] Saved loan card 1_loan.png
+2025-11-01 00:07:19,232 [INFO] Saved emi card 1_emi.png
+2025-11-01 00:07:19,282 [INFO] Saved bank card 1_bank.png
+2025-11-01 00:07:19,326 [INFO] Saved loan card 2_loan.png
+2025-11-01 00:07:19,373 [INFO] Saved emi card 2_emi.png
+2025-11-01 00:07:19,423 [INFO] Saved bank card 2_bank.png
+2025-11-01 00:07:19,466 [INFO] Saved loan card 3_loan.png
+2025-11-01 00:07:19,513 [INFO] Saved emi card 3_emi.png
+2025-11-01 00:07:19,564 [INFO] Saved bank card 3_bank.png
+2025-11-01 00:07:19,609 [INFO] Saved loan card 4_loan.png
+2025-11-01 00:07:19,657 [INFO] Saved emi card 4_emi.png
+2025-11-01 00:07:19,708 [INFO] Saved bank card 4_bank.png
+2025-11-01 00:07:19,752 [INFO] Saved loan card 5_loan.png
+2025-11-01 00:07:19,800 [INFO] Saved emi card 5_emi.png
+2025-11-01 00:07:19,848 [INFO] Saved bank card 5_bank.png
+2025-11-01 00:07:19,850 [INFO] Done. Total: 5, Success: 5, Failures: 0
