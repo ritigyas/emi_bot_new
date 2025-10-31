@@ -291,3 +291,409 @@ AttributeError: 'ImageDraw' object has no attribute 'textsize'
 2025-10-30 17:41:51,013 [WARNING] Template missing for bank: assets\templates\bank.png. Using plain background.
 2025-10-30 17:41:51,052 [INFO] Generated bank card: assets\generated\008_bank.png
 2025-10-30 17:41:51,054 [INFO] Card generation completed. Total: 8, Success: 8, Failures: 0
+2025-10-30 20:43:06,343 [INFO] Starting card generation
+2025-10-30 20:43:06,354 [INFO] Templates present in assets\templates
+2025-10-30 20:43:06,472 [INFO] Saved loan card: 001_loan.png
+2025-10-30 20:43:06,539 [INFO] Saved emi card: 001_emi.png
+2025-10-30 20:43:06,607 [INFO] Saved bank card: 001_bank.png
+2025-10-30 20:43:06,679 [INFO] Saved loan card: 002_loan.png
+2025-10-30 20:43:06,745 [INFO] Saved emi card: 002_emi.png
+2025-10-30 20:43:06,813 [INFO] Saved bank card: 002_bank.png
+2025-10-30 20:43:06,883 [INFO] Saved loan card: 003_loan.png
+2025-10-30 20:43:07,023 [INFO] Saved emi card: 003_emi.png
+2025-10-30 20:43:07,094 [INFO] Saved bank card: 003_bank.png
+2025-10-30 20:43:07,171 [INFO] Saved loan card: 004_loan.png
+2025-10-30 20:43:07,238 [INFO] Saved emi card: 004_emi.png
+2025-10-30 20:43:07,303 [INFO] Saved bank card: 004_bank.png
+2025-10-30 20:43:07,380 [INFO] Saved loan card: 005_loan.png
+2025-10-30 20:43:07,447 [INFO] Saved emi card: 005_emi.png
+2025-10-30 20:43:07,516 [INFO] Saved bank card: 005_bank.png
+2025-10-30 20:43:07,587 [INFO] Saved loan card: 006_loan.png
+2025-10-30 20:43:07,661 [INFO] Saved emi card: 006_emi.png
+2025-10-30 20:43:07,728 [INFO] Saved bank card: 006_bank.png
+2025-10-30 20:43:07,798 [INFO] Saved loan card: 007_loan.png
+2025-10-30 20:43:07,864 [INFO] Saved emi card: 007_emi.png
+2025-10-30 20:43:07,934 [INFO] Saved bank card: 007_bank.png
+2025-10-30 20:43:08,004 [INFO] Saved loan card: 008_loan.png
+2025-10-30 20:43:08,069 [INFO] Saved emi card: 008_emi.png
+2025-10-30 20:43:08,141 [INFO] Saved bank card: 008_bank.png
+2025-10-30 20:43:08,143 [INFO] Generation finished. Total: 8, Success: 8, Failures: 0
+2025-10-30 20:59:33,333 [INFO] Starting card generation
+2025-10-30 20:59:33,335 [INFO] Templates present in assets\templates
+2025-10-30 20:59:33,472 [INFO] Saved loan card: 001_loan.png
+2025-10-30 20:59:33,561 [INFO] Saved emi card: 001_emi.png
+2025-10-30 20:59:33,635 [INFO] Saved bank card: 001_bank.png
+2025-10-30 20:59:33,716 [INFO] Saved loan card: 002_loan.png
+2025-10-30 20:59:33,797 [INFO] Saved emi card: 002_emi.png
+2025-10-30 20:59:33,868 [INFO] Saved bank card: 002_bank.png
+2025-10-30 20:59:33,948 [INFO] Saved loan card: 003_loan.png
+2025-10-30 20:59:34,026 [INFO] Saved emi card: 003_emi.png
+2025-10-30 20:59:34,099 [INFO] Saved bank card: 003_bank.png
+2025-10-30 20:59:34,174 [INFO] Saved loan card: 004_loan.png
+2025-10-30 20:59:34,250 [INFO] Saved emi card: 004_emi.png
+2025-10-30 20:59:34,329 [INFO] Saved bank card: 004_bank.png
+2025-10-30 20:59:34,408 [INFO] Saved loan card: 005_loan.png
+2025-10-30 20:59:34,488 [INFO] Saved emi card: 005_emi.png
+2025-10-30 20:59:34,564 [INFO] Saved bank card: 005_bank.png
+2025-10-30 20:59:34,641 [INFO] Saved loan card: 006_loan.png
+2025-10-30 20:59:34,722 [INFO] Saved emi card: 006_emi.png
+2025-10-30 20:59:34,792 [INFO] Saved bank card: 006_bank.png
+2025-10-30 20:59:34,869 [INFO] Saved loan card: 007_loan.png
+2025-10-30 20:59:34,944 [INFO] Saved emi card: 007_emi.png
+2025-10-30 20:59:35,019 [INFO] Saved bank card: 007_bank.png
+2025-10-30 20:59:35,095 [INFO] Saved loan card: 008_loan.png
+2025-10-30 20:59:35,175 [INFO] Saved emi card: 008_emi.png
+2025-10-30 20:59:35,251 [INFO] Saved bank card: 008_bank.png
+2025-10-30 20:59:35,253 [INFO] Generation finished. Total: 8, Success: 8, Failures: 0
+2025-10-30 21:12:53,878 [INFO] Starting card generation
+2025-10-30 21:12:53,878 [INFO] Templates present in assets\templates
+2025-10-30 21:12:53,922 [INFO] Saved loan card: 001_loan.png
+2025-10-30 21:12:53,952 [INFO] Saved emi card: 001_emi.png
+2025-10-30 21:12:53,984 [INFO] Saved bank card: 001_bank.png
+2025-10-30 21:12:54,011 [INFO] Saved loan card: 002_loan.png
+2025-10-30 21:12:54,041 [INFO] Saved emi card: 002_emi.png
+2025-10-30 21:12:54,072 [INFO] Saved bank card: 002_bank.png
+2025-10-30 21:12:54,100 [INFO] Saved loan card: 003_loan.png
+2025-10-30 21:12:54,129 [INFO] Saved emi card: 003_emi.png
+2025-10-30 21:12:54,161 [INFO] Saved bank card: 003_bank.png
+2025-10-30 21:12:54,188 [INFO] Saved loan card: 004_loan.png
+2025-10-30 21:12:54,216 [INFO] Saved emi card: 004_emi.png
+2025-10-30 21:12:54,249 [INFO] Saved bank card: 004_bank.png
+2025-10-30 21:12:54,283 [INFO] Saved loan card: 005_loan.png
+2025-10-30 21:12:54,315 [INFO] Saved emi card: 005_emi.png
+2025-10-30 21:12:54,349 [INFO] Saved bank card: 005_bank.png
+2025-10-30 21:12:54,379 [INFO] Saved loan card: 006_loan.png
+2025-10-30 21:12:54,411 [INFO] Saved emi card: 006_emi.png
+2025-10-30 21:12:54,445 [INFO] Saved bank card: 006_bank.png
+2025-10-30 21:12:54,475 [INFO] Saved loan card: 007_loan.png
+2025-10-30 21:12:54,506 [INFO] Saved emi card: 007_emi.png
+2025-10-30 21:12:54,541 [INFO] Saved bank card: 007_bank.png
+2025-10-30 21:12:54,570 [INFO] Saved loan card: 008_loan.png
+2025-10-30 21:12:54,602 [INFO] Saved emi card: 008_emi.png
+2025-10-30 21:12:54,636 [INFO] Saved bank card: 008_bank.png
+2025-10-30 21:12:54,637 [INFO] Generation finished. Total: 8, Success: 8, Failures: 0
+2025-10-30 21:16:11,382 [INFO] Starting card generation
+2025-10-30 21:16:11,383 [INFO] Templates present in assets\templates
+2025-10-30 21:16:11,426 [INFO] Saved loan card: 001_loan.png
+2025-10-30 21:16:11,457 [INFO] Saved emi card: 001_emi.png
+2025-10-30 21:16:11,490 [INFO] Saved bank card: 001_bank.png
+2025-10-30 21:16:11,520 [INFO] Saved loan card: 002_loan.png
+2025-10-30 21:16:11,550 [INFO] Saved emi card: 002_emi.png
+2025-10-30 21:16:11,581 [INFO] Saved bank card: 002_bank.png
+2025-10-30 21:16:11,611 [INFO] Saved loan card: 003_loan.png
+2025-10-30 21:16:11,641 [INFO] Saved emi card: 003_emi.png
+2025-10-30 21:16:11,673 [INFO] Saved bank card: 003_bank.png
+2025-10-30 21:16:11,704 [INFO] Saved loan card: 004_loan.png
+2025-10-30 21:16:11,733 [INFO] Saved emi card: 004_emi.png
+2025-10-30 21:16:11,766 [INFO] Saved bank card: 004_bank.png
+2025-10-30 21:16:11,796 [INFO] Saved loan card: 005_loan.png
+2025-10-30 21:16:11,826 [INFO] Saved emi card: 005_emi.png
+2025-10-30 21:16:11,859 [INFO] Saved bank card: 005_bank.png
+2025-10-30 21:16:11,888 [INFO] Saved loan card: 006_loan.png
+2025-10-30 21:16:11,917 [INFO] Saved emi card: 006_emi.png
+2025-10-30 21:16:11,949 [INFO] Saved bank card: 006_bank.png
+2025-10-30 21:16:11,979 [INFO] Saved loan card: 007_loan.png
+2025-10-30 21:16:12,007 [INFO] Saved emi card: 007_emi.png
+2025-10-30 21:16:12,040 [INFO] Saved bank card: 007_bank.png
+2025-10-30 21:16:12,069 [INFO] Saved loan card: 008_loan.png
+2025-10-30 21:16:12,099 [INFO] Saved emi card: 008_emi.png
+2025-10-30 21:16:12,131 [INFO] Saved bank card: 008_bank.png
+2025-10-30 21:16:12,132 [INFO] Generation finished. Total: 8, Success: 8, Failures: 0
+2025-10-30 21:21:31,693 [INFO] Starting card generation
+2025-10-30 21:21:31,694 [INFO] Templates present in assets\templates
+2025-10-30 21:21:31,736 [INFO] Saved loan card: 001_loan.png
+2025-10-30 21:21:31,770 [INFO] Saved emi card: 001_emi.png
+2025-10-30 21:21:31,804 [INFO] Saved bank card: 001_bank.png
+2025-10-30 21:21:31,838 [INFO] Saved loan card: 002_loan.png
+2025-10-30 21:21:31,873 [INFO] Saved emi card: 002_emi.png
+2025-10-30 21:21:31,905 [INFO] Saved bank card: 002_bank.png
+2025-10-30 21:21:31,935 [INFO] Saved loan card: 003_loan.png
+2025-10-30 21:21:31,966 [INFO] Saved emi card: 003_emi.png
+2025-10-30 21:21:31,998 [INFO] Saved bank card: 003_bank.png
+2025-10-30 21:21:32,029 [INFO] Saved loan card: 004_loan.png
+2025-10-30 21:21:32,059 [INFO] Saved emi card: 004_emi.png
+2025-10-30 21:21:32,092 [INFO] Saved bank card: 004_bank.png
+2025-10-30 21:21:32,124 [INFO] Saved loan card: 005_loan.png
+2025-10-30 21:21:32,157 [INFO] Saved emi card: 005_emi.png
+2025-10-30 21:21:32,190 [INFO] Saved bank card: 005_bank.png
+2025-10-30 21:21:32,220 [INFO] Saved loan card: 006_loan.png
+2025-10-30 21:21:32,250 [INFO] Saved emi card: 006_emi.png
+2025-10-30 21:21:32,283 [INFO] Saved bank card: 006_bank.png
+2025-10-30 21:21:32,313 [INFO] Saved loan card: 007_loan.png
+2025-10-30 21:21:32,343 [INFO] Saved emi card: 007_emi.png
+2025-10-30 21:21:32,376 [INFO] Saved bank card: 007_bank.png
+2025-10-30 21:21:32,405 [INFO] Saved loan card: 008_loan.png
+2025-10-30 21:21:32,435 [INFO] Saved emi card: 008_emi.png
+2025-10-30 21:21:32,467 [INFO] Saved bank card: 008_bank.png
+2025-10-30 21:21:32,468 [INFO] Generation finished. Total: 8, Success: 8, Failures: 0
+2025-10-30 21:30:13,256 [INFO] Starting card generation
+2025-10-30 21:30:13,256 [INFO] Templates present in assets\templates
+2025-10-30 21:30:13,297 [INFO] Saved loan card: 001_loan.png
+2025-10-30 21:30:13,325 [INFO] Saved emi card: 001_emi.png
+2025-10-30 21:30:13,355 [INFO] Saved bank card: 001_bank.png
+2025-10-30 21:30:13,383 [INFO] Saved loan card: 002_loan.png
+2025-10-30 21:30:13,411 [INFO] Saved emi card: 002_emi.png
+2025-10-30 21:30:13,440 [INFO] Saved bank card: 002_bank.png
+2025-10-30 21:30:13,467 [INFO] Saved loan card: 003_loan.png
+2025-10-30 21:30:13,495 [INFO] Saved emi card: 003_emi.png
+2025-10-30 21:30:13,525 [INFO] Saved bank card: 003_bank.png
+2025-10-30 21:30:13,553 [INFO] Saved loan card: 004_loan.png
+2025-10-30 21:30:13,583 [INFO] Saved emi card: 004_emi.png
+2025-10-30 21:30:13,613 [INFO] Saved bank card: 004_bank.png
+2025-10-30 21:30:13,642 [INFO] Saved loan card: 005_loan.png
+2025-10-30 21:30:13,671 [INFO] Saved emi card: 005_emi.png
+2025-10-30 21:30:13,700 [INFO] Saved bank card: 005_bank.png
+2025-10-30 21:30:13,728 [INFO] Saved loan card: 006_loan.png
+2025-10-30 21:30:13,756 [INFO] Saved emi card: 006_emi.png
+2025-10-30 21:30:13,785 [INFO] Saved bank card: 006_bank.png
+2025-10-30 21:30:13,814 [INFO] Saved loan card: 007_loan.png
+2025-10-30 21:30:13,842 [INFO] Saved emi card: 007_emi.png
+2025-10-30 21:30:13,872 [INFO] Saved bank card: 007_bank.png
+2025-10-30 21:30:13,900 [INFO] Saved loan card: 008_loan.png
+2025-10-30 21:30:13,928 [INFO] Saved emi card: 008_emi.png
+2025-10-30 21:30:13,958 [INFO] Saved bank card: 008_bank.png
+2025-10-30 21:30:13,959 [INFO] Generation finished. Total: 8, Success: 8, Failures: 0
+2025-10-30 21:39:40,720 - WARNING - Logo load failed: [Errno 2] No such file or directory: '/assets/logos/hdfc.png'
+2025-10-30 21:39:40,732 - INFO - Saved loan card: assets\generated\001_loan.png
+2025-10-30 21:39:40,740 - ERROR - Failed to generate for ID 1
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 150, in main
+    generate_card(row, "emi")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 116, in generate_card
+    ("EMI ID", row["emi_id"]),
+               ~~~^^^^^^^^^^
+KeyError: 'emi_id'
+2025-10-30 21:39:40,749 - WARNING - Logo load failed: [Errno 2] No such file or directory: '/assets/logos/sbi.png'
+2025-10-30 21:39:40,761 - INFO - Saved loan card: assets\generated\002_loan.png
+2025-10-30 21:39:40,768 - ERROR - Failed to generate for ID 2
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 150, in main
+    generate_card(row, "emi")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 116, in generate_card
+    ("EMI ID", row["emi_id"]),
+               ~~~^^^^^^^^^^
+KeyError: 'emi_id'
+2025-10-30 21:39:40,776 - WARNING - Logo load failed: [Errno 2] No such file or directory: '/assets/logos/sbi.png'
+2025-10-30 21:39:40,789 - INFO - Saved loan card: assets\generated\003_loan.png
+2025-10-30 21:39:40,796 - ERROR - Failed to generate for ID 3
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 150, in main
+    generate_card(row, "emi")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 116, in generate_card
+    ("EMI ID", row["emi_id"]),
+               ~~~^^^^^^^^^^
+KeyError: 'emi_id'
+2025-10-30 21:39:40,804 - WARNING - Logo load failed: [Errno 2] No such file or directory: '/assets/logos/axis.png'
+2025-10-30 21:39:40,817 - INFO - Saved loan card: assets\generated\004_loan.png
+2025-10-30 21:39:40,824 - ERROR - Failed to generate for ID 4
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 150, in main
+    generate_card(row, "emi")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 116, in generate_card
+    ("EMI ID", row["emi_id"]),
+               ~~~^^^^^^^^^^
+KeyError: 'emi_id'
+2025-10-30 21:39:40,832 - WARNING - Logo load failed: [Errno 2] No such file or directory: '/assets/logos/sbi.png'
+2025-10-30 21:39:40,844 - INFO - Saved loan card: assets\generated\005_loan.png
+2025-10-30 21:39:40,851 - ERROR - Failed to generate for ID 5
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 150, in main
+    generate_card(row, "emi")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 116, in generate_card
+    ("EMI ID", row["emi_id"]),
+               ~~~^^^^^^^^^^
+KeyError: 'emi_id'
+2025-10-30 21:39:40,859 - WARNING - Logo load failed: [Errno 2] No such file or directory: '/assets/logos/axis.png'
+2025-10-30 21:39:40,872 - INFO - Saved loan card: assets\generated\006_loan.png
+2025-10-30 21:39:40,879 - ERROR - Failed to generate for ID 6
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 150, in main
+    generate_card(row, "emi")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 116, in generate_card
+    ("EMI ID", row["emi_id"]),
+               ~~~^^^^^^^^^^
+KeyError: 'emi_id'
+2025-10-30 21:39:40,886 - WARNING - Logo load failed: [Errno 2] No such file or directory: '/assets/logos/hdfc.png'
+2025-10-30 21:39:40,899 - INFO - Saved loan card: assets\generated\007_loan.png
+2025-10-30 21:39:40,906 - ERROR - Failed to generate for ID 7
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 150, in main
+    generate_card(row, "emi")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 116, in generate_card
+    ("EMI ID", row["emi_id"]),
+               ~~~^^^^^^^^^^
+KeyError: 'emi_id'
+2025-10-30 21:39:40,914 - WARNING - Logo load failed: [Errno 2] No such file or directory: '/assets/logos/hdfc.png'
+2025-10-30 21:39:40,926 - INFO - Saved loan card: assets\generated\008_loan.png
+2025-10-30 21:39:40,934 - ERROR - Failed to generate for ID 8
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 150, in main
+    generate_card(row, "emi")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\generate_cards.py", line 116, in generate_card
+    ("EMI ID", row["emi_id"]),
+               ~~~^^^^^^^^^^
+KeyError: 'emi_id'
+2025-10-30 21:39:40,934 - INFO - Generation finished. Total: 8, Success: 0, Failures: 8
+2025-10-30 21:49:14,748 [INFO] Starting card generation
+2025-10-30 21:49:14,748 [INFO] Templates present in assets\templates (force=False)
+2025-10-30 21:49:14,794 [INFO] Saved loan card: 001_loan.png
+2025-10-30 21:49:14,823 [INFO] Saved emi card: 001_emi.png
+2025-10-30 21:49:14,856 [INFO] Saved bank card: 001_bank.png
+2025-10-30 21:49:14,886 [INFO] Saved loan card: 002_loan.png
+2025-10-30 21:49:14,931 [INFO] Saved emi card: 002_emi.png
+2025-10-30 21:49:14,973 [INFO] Saved bank card: 002_bank.png
+2025-10-30 21:49:15,003 [INFO] Saved loan card: 003_loan.png
+2025-10-30 21:49:15,035 [INFO] Saved emi card: 003_emi.png
+2025-10-30 21:49:15,065 [INFO] Saved bank card: 003_bank.png
+2025-10-30 21:49:15,094 [INFO] Saved loan card: 004_loan.png
+2025-10-30 21:49:15,123 [INFO] Saved emi card: 004_emi.png
+2025-10-30 21:49:15,153 [INFO] Saved bank card: 004_bank.png
+2025-10-30 21:49:15,183 [INFO] Saved loan card: 005_loan.png
+2025-10-30 21:49:15,212 [INFO] Saved emi card: 005_emi.png
+2025-10-30 21:49:15,244 [INFO] Saved bank card: 005_bank.png
+2025-10-30 21:49:15,277 [INFO] Saved loan card: 006_loan.png
+2025-10-30 21:49:15,308 [INFO] Saved emi card: 006_emi.png
+2025-10-30 21:49:15,340 [INFO] Saved bank card: 006_bank.png
+2025-10-30 21:49:15,372 [INFO] Saved loan card: 007_loan.png
+2025-10-30 21:49:15,403 [INFO] Saved emi card: 007_emi.png
+2025-10-30 21:49:15,437 [INFO] Saved bank card: 007_bank.png
+2025-10-30 21:49:15,467 [INFO] Saved loan card: 008_loan.png
+2025-10-30 21:49:15,498 [INFO] Saved emi card: 008_emi.png
+2025-10-30 21:49:15,531 [INFO] Saved bank card: 008_bank.png
+2025-10-30 21:49:15,533 [INFO] Generation finished. Total: 8, Success: 8, Failures: 0
+2025-10-30 21:52:26,264 [INFO] Starting generation
+2025-10-30 21:52:26,264 [INFO] Templates ready in assets\templates (force=False)
+2025-10-30 21:52:26,311 [INFO] Saved loan card 001_loan.png
+2025-10-30 21:52:26,340 [INFO] Saved emi card 001_emi.png
+2025-10-30 21:52:26,371 [INFO] Saved bank card 001_bank.png
+2025-10-30 21:52:26,401 [INFO] Saved loan card 002_loan.png
+2025-10-30 21:52:26,430 [INFO] Saved emi card 002_emi.png
+2025-10-30 21:52:26,460 [INFO] Saved bank card 002_bank.png
+2025-10-30 21:52:26,492 [INFO] Saved loan card 003_loan.png
+2025-10-30 21:52:26,521 [INFO] Saved emi card 003_emi.png
+2025-10-30 21:52:26,554 [INFO] Saved bank card 003_bank.png
+2025-10-30 21:52:26,584 [INFO] Saved loan card 004_loan.png
+2025-10-30 21:52:26,614 [INFO] Saved emi card 004_emi.png
+2025-10-30 21:52:26,645 [INFO] Saved bank card 004_bank.png
+2025-10-30 21:52:26,677 [INFO] Saved loan card 005_loan.png
+2025-10-30 21:52:26,706 [INFO] Saved emi card 005_emi.png
+2025-10-30 21:52:26,739 [INFO] Saved bank card 005_bank.png
+2025-10-30 21:52:26,769 [INFO] Saved loan card 006_loan.png
+2025-10-30 21:52:26,799 [INFO] Saved emi card 006_emi.png
+2025-10-30 21:52:26,830 [INFO] Saved bank card 006_bank.png
+2025-10-30 21:52:26,861 [INFO] Saved loan card 007_loan.png
+2025-10-30 21:52:26,890 [INFO] Saved emi card 007_emi.png
+2025-10-30 21:52:26,921 [INFO] Saved bank card 007_bank.png
+2025-10-30 21:52:26,951 [INFO] Saved loan card 008_loan.png
+2025-10-30 21:52:26,980 [INFO] Saved emi card 008_emi.png
+2025-10-30 21:52:27,012 [INFO] Saved bank card 008_bank.png
+2025-10-30 21:52:27,013 [INFO] Done. Total: 8, Success: 8, Failures: 0
+2025-10-30 22:06:51,576 [INFO] Starting generation
+2025-10-30 22:06:51,633 [INFO] Created empty template: assets\templates\loan_card_template.png
+2025-10-30 22:06:51,677 [INFO] Created empty template: assets\templates\emi_card_template.png
+2025-10-30 22:06:51,720 [INFO] Created empty template: assets\templates\bank_card_template.png
+2025-10-30 22:06:51,720 [INFO] Templates ready in assets\templates (force=False)
+2025-10-30 22:06:51,756 [INFO] Saved loan card 001_loan.png
+2025-10-30 22:06:51,779 [INFO] Saved emi card 001_emi.png
+2025-10-30 22:06:51,806 [INFO] Saved bank card 001_bank.png
+2025-10-30 22:06:51,830 [INFO] Saved loan card 002_loan.png
+2025-10-30 22:06:51,854 [INFO] Saved emi card 002_emi.png
+2025-10-30 22:06:51,879 [INFO] Saved bank card 002_bank.png
+2025-10-30 22:06:51,903 [INFO] Saved loan card 003_loan.png
+2025-10-30 22:06:51,926 [INFO] Saved emi card 003_emi.png
+2025-10-30 22:06:51,951 [INFO] Saved bank card 003_bank.png
+2025-10-30 22:06:51,976 [INFO] Saved loan card 004_loan.png
+2025-10-30 22:06:52,000 [INFO] Saved emi card 004_emi.png
+2025-10-30 22:06:52,026 [INFO] Saved bank card 004_bank.png
+2025-10-30 22:06:52,051 [INFO] Saved loan card 005_loan.png
+2025-10-30 22:06:52,074 [INFO] Saved emi card 005_emi.png
+2025-10-30 22:06:52,100 [INFO] Saved bank card 005_bank.png
+2025-10-30 22:06:52,124 [INFO] Saved loan card 006_loan.png
+2025-10-30 22:06:52,147 [INFO] Saved emi card 006_emi.png
+2025-10-30 22:06:52,172 [INFO] Saved bank card 006_bank.png
+2025-10-30 22:06:52,196 [INFO] Saved loan card 007_loan.png
+2025-10-30 22:06:52,220 [INFO] Saved emi card 007_emi.png
+2025-10-30 22:06:52,247 [INFO] Saved bank card 007_bank.png
+2025-10-30 22:06:52,272 [INFO] Saved loan card 008_loan.png
+2025-10-30 22:06:52,294 [INFO] Saved emi card 008_emi.png
+2025-10-30 22:06:52,320 [INFO] Saved bank card 008_bank.png
+2025-10-30 22:06:52,321 [INFO] Done. Total: 8, Success: 8, Failures: 0
+2025-10-31 22:16:04,358 [INFO] Starting generation
+2025-10-31 22:16:04,359 [INFO] Templates ready in assets\templates (force=False)
+2025-10-31 22:16:04,505 [INFO] Saved loan card 001_loan.png
+2025-10-31 22:16:04,615 [INFO] Saved emi card 001_emi.png
+2025-10-31 22:16:04,676 [INFO] Saved bank card 001_bank.png
+2025-10-31 22:16:04,722 [INFO] Saved loan card 002_loan.png
+2025-10-31 22:16:04,773 [INFO] Saved emi card 002_emi.png
+2025-10-31 22:16:04,830 [INFO] Saved bank card 002_bank.png
+2025-10-31 22:16:04,876 [INFO] Saved loan card 003_loan.png
+2025-10-31 22:16:04,929 [INFO] Saved emi card 003_emi.png
+2025-10-31 22:16:04,992 [INFO] Saved bank card 003_bank.png
+2025-10-31 22:16:05,041 [INFO] Saved loan card 004_loan.png
+2025-10-31 22:16:05,096 [INFO] Saved emi card 004_emi.png
+2025-10-31 22:16:05,159 [INFO] Saved bank card 004_bank.png
+2025-10-31 22:16:05,208 [INFO] Saved loan card 005_loan.png
+2025-10-31 22:16:05,262 [INFO] Saved emi card 005_emi.png
+2025-10-31 22:16:05,322 [INFO] Saved bank card 005_bank.png
+2025-10-31 22:16:05,373 [INFO] Saved loan card 006_loan.png
+2025-10-31 22:16:05,425 [INFO] Saved emi card 006_emi.png
+2025-10-31 22:16:05,484 [INFO] Saved bank card 006_bank.png
+2025-10-31 22:16:05,532 [INFO] Saved loan card 007_loan.png
+2025-10-31 22:16:05,585 [INFO] Saved emi card 007_emi.png
+2025-10-31 22:16:05,646 [INFO] Saved bank card 007_bank.png
+2025-10-31 22:16:05,694 [INFO] Saved loan card 008_loan.png
+2025-10-31 22:16:05,747 [INFO] Saved emi card 008_emi.png
+2025-10-31 22:16:05,809 [INFO] Saved bank card 008_bank.png
+2025-10-31 22:16:05,811 [INFO] Done. Total: 8, Success: 8, Failures: 0
+2025-10-31 22:17:38,446 [INFO] Starting generation
+2025-10-31 22:17:38,447 [INFO] Templates ready in assets\templates (force=False)
+2025-10-31 22:17:38,450 [ERROR] Failed to read CSV
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\scripts\generate_cards.py", line 291, in main
+    df = pd.read_csv(csv_path, dtype=str).fillna("")
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2025-10-31 23:29:40,394 [INFO] Starting generation
+2025-10-31 23:29:40,407 [INFO] Templates ready in assets\templates (force=False)
+2025-10-31 23:29:40,410 [ERROR] Failed to read CSV
+Traceback (most recent call last):
+  File "C:\Users\ritig\Desktop\new_python_emi_bot\scripts\generate_cards.py", line 291, in main
+    df = pd.read_csv(csv_path, dtype=str).fillna("")
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ritig\anaconda3\Anaconda\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file

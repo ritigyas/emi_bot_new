@@ -1,0 +1,9 @@
+id,name,language,loan_amount,emi_amount,due_date,bank_name,branch_name,ifsc,bank_logo_path,phone_number
+001,Ramesh Kumar,hindi,250000,5750,06-Nov-2025,HDFC Bank,Andheri East,HDFC0001234,/assets/logos/hdfc.jpg,+919876543210
+002,Lakshmi Devi,tamil,180000,4200,06-Nov-2025,SBI,Mylapore,SBIN0001123,/assets/logos/sbi.jpg,+919812345678
+003,Amit Sharma,hindi,300000,6900,05-Nov-2025,ICICI Bank,Connaught Place,ICIC0000567,/assets/logos/icici.jpg,+919700112233
+004,Suman Roy,bengali,220000,5100,07-Nov-2025,Axis Bank,Salt Lake City,UTIB0000456,/assets/logos/axis.jpg,+919812209876
+005,Mohammed Iqbal,urdu,275000,6400,05-Nov-2025,SBI Bank,Charminar,BARB0CH1234,/assets/logos/sbi.jpg,+919967654321
+006,Priya Nair,malayalam,195000,4550,09-Nov-2025,SBI Bank,Kochi,SBIN0001233,/assets/logos/sbi.jpg,+919812398745
+007,Harpreet Singh,punjabi,310000,7100,05-Nov-2025,HDFC Bank,Ludhiana,PUNB0000654,/assets/logos/hdfc.jpg,+919814567890
+008,Neha Patel,gujarati,205000,4750,10-Nov-2025,HDFC Bank,Ahmedabad,BKID0000789,/assets/logos/hdfc.jpg,+919898123456

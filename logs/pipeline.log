@@ -1,0 +1,20 @@
+2025-10-31 22:16:35,314 [INFO] === Starting: Data Preparation ===
+2025-10-31 22:16:37,794 [ERROR] \u274c Failed: Data Preparation | Error: Command '['python', 'scripts/prepare_customer_csv.py']' returned non-zero exit status 1.
+2025-10-31 22:17:34,027 [INFO] === Starting: Data Preparation ===
+2025-10-31 22:17:35,645 [INFO] \u2705 Completed: Data Preparation
+2025-10-31 22:17:35,645 [INFO] === Starting: Generate Personalized Audio Snippets ===
+2025-10-31 22:17:35,738 [INFO] \u2705 Completed: Generate Personalized Audio Snippets
+2025-10-31 22:17:35,738 [INFO] === Starting: Generate Visual Cards ===
+2025-10-31 22:17:38,633 [INFO] \u2705 Completed: Generate Visual Cards
+2025-10-31 22:17:38,633 [INFO] === Starting: Compose Personalized Videos ===
+2025-10-31 22:17:38,835 [ERROR] \u274c Failed: Compose Personalized Videos | Error: Command '['python', 'scripts/compose_videos.py']' returned non-zero exit status 1.
+2025-10-31 23:23:16,569 [INFO] === Starting: Data Preparation ===
+2025-10-31 23:23:18,851 [ERROR] \u274c Failed: Data Preparation | Error: Command '['python', 'scripts/prepare_customer_csv.py']' returned non-zero exit status 1.
+2025-10-31 23:29:35,755 [INFO] === Starting: Data Preparation ===
+2025-10-31 23:29:37,449 [INFO] \u2705 Completed: Data Preparation
+2025-10-31 23:29:37,449 [INFO] === Starting: Generate Personalized Audio Snippets ===
+2025-10-31 23:29:37,540 [INFO] \u2705 Completed: Generate Personalized Audio Snippets
+2025-10-31 23:29:37,540 [INFO] === Starting: Generate Visual Cards ===
+2025-10-31 23:29:40,574 [INFO] \u2705 Completed: Generate Visual Cards
+2025-10-31 23:29:40,574 [INFO] === Starting: Compose Personalized Videos ===
+2025-10-31 23:29:40,810 [ERROR] \u274c Failed: Compose Personalized Videos | Error: Command '['python', 'scripts/compose_videos.py']' returned non-zero exit status 1.
